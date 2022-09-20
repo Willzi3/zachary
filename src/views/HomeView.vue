@@ -132,7 +132,7 @@ h3{
 }
 .display{
   border: 1px solid black;
-  width: 90%;
+  width: 98%;
   height: 90%;
 }
 .add{
