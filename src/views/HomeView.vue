@@ -121,7 +121,7 @@ h3{
 .list{
   border: 1px solid black;
   height: 80vh;
-  width: 90vw;
+  width: 98vw;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
