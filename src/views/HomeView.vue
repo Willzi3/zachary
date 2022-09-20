@@ -7,7 +7,17 @@
       <input class="form-btn" type="submit" value="Login" />
     </form>
     <div v-else>
-      <h1>Welcome {{user.full_name}}</h1>
+      <div class="list">
+        <form @submit.prevent="addProduct">
+        <h3>Add Product</h3>
+            <input class="form-input" type="text" name="name" required v-model="name" placeholder="Name:"/>
+            <input class="form-input" type="text" name="descriptions" required v-model="descriptions" placeholder="Descriptions:"/>
+            <input class="form-input" type="text" name="image" required v-model="image" placeholder="Image:"/>
+            <input class="form-input" type="text" name="category" required v-model="category" placeholder="Category:"/>
+            <input class="form-input" type="text" name="created_date" required v-model="created_date" placeholder="Created Date:"/>
+            <input class="form-btn" type="submit" value="Add" />
+      </form>
+      </div>
     </div>
   </div>
 </template>
@@ -22,6 +32,11 @@ export default {
     return {
       email: "",
       password: "",
+      name: "",
+      descriptions: "",
+      image: "",
+      category: "",
+      created_date: ""
     };
   },
   methods: {
@@ -31,6 +46,15 @@ export default {
         password: this.password,
       });
     },
+    addProduct() {
+        this.$store.dispatch("addProduct", {
+        name: this.name,
+        descriptions: this.descriptions,
+        image: this.image,
+        category: this.category,
+        created_date: this.created_date
+        });
+      },
   },
 };
 </script>
@@ -50,22 +74,22 @@ form{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 500px;
+  width: 300px;
+  height: 300px;
   gap: 20px;
   color: white;
 }
 .form-input{
-  width: 70%;
+  width: 30%;
   border: 1px solid lightgray;
   border-radius: 5px;
-  height: 50px;
+  height: 20px;
 }
 .form-btn{
-  width: 70%;
+  width: 30%;
   border: none;
   border-radius: 5px;
-  height: 50px;
+  height: 20px;
 }
 .form-extra{
   display: flex;
@@ -89,9 +113,11 @@ h3{
   font-weight: bold;
   font-size: 1.4rem;
 }
-hr{
-  width: 90%;
-  
+.list{
+  border: 1px solid black;
+  height: 80vh;
+  width: 90vw;
+  margin-top: 10px;
 }
 @media (min-width: 300px) and (max-width: 400px) {
   .container{

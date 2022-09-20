@@ -3,7 +3,6 @@ import router from '../router/index'
 import createPersistedState from "vuex-persistedstate";
 export default createStore({
   state: {
-  
     user:null,
     users: null,
     token: null,
@@ -108,13 +107,27 @@ export default createStore({
       fetch("https://zachary-williams.herokuapp.com/products/" +id)
         .then((response) => response.json())
         .then((product) => context.commit("setProduct", product[0]));
-    }
-  
-   
- 
+    },
+    addProduct: async (context, payload) => {
+      fetch("https://zachary-williams.herokuapp.com/products/", {
+        method: 'POST',
+        body: JSON.stringify({
+            name: payload.name,
+            descriptions: payload.descriptions,
+            image: payload.image,
+            category: payload.category,
+            created_date: payload.created_date
+        }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+      
 
+        },
 
-  
   },
 
   plugins: [createPersistedState()]
