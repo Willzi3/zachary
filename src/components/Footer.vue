@@ -13,7 +13,7 @@
   <style>
   footer{
       
-      height: 100px;
+      height: 50px;
       background: black;
       display: flex;
       justify-content: space-between;
