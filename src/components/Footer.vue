@@ -1,7 +1,6 @@
 <template>
     <footer>
-      <div>All Rights Reserved- created by zachary williams</div>
-      <router-link to="/admin"><div class="admin"><h2>Admin</h2></div></router-link>
+      <div>Zachary Williams</div>
     </footer>
    
   </template>
