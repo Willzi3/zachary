@@ -127,7 +127,7 @@ h3{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   padding: 20px;
 }
 .display{
