@@ -8,7 +8,7 @@
     </form>
     <div v-else>
       <div class="list">
-        <form @submit.prevent="addProduct">
+        <!-- <form @submit.prevent="addProduct">
         <h3>Add Product</h3>
             <input class="form-input" type="text" name="name" required v-model="name" placeholder="Name:"/>
             <input class="form-input" type="text" name="descriptions" required v-model="descriptions" placeholder="Descriptions:"/>
@@ -16,7 +16,9 @@
             <input class="form-input" type="text" name="category" required v-model="category" placeholder="Category:"/>
             <input class="form-input" type="text" name="created_date" required v-model="created_date" placeholder="Created Date:"/>
             <input class="form-btn" type="submit" value="Add" />
-      </form>
+      </form> -->
+      <div class="display"></div>
+      <div class="add"><button>Add Project</button></div>
       </div>
     </div>
   </div>
@@ -27,6 +29,9 @@ export default {
     user() {
       return this.$store.state.user;
     },
+    products() {
+      return this.$store.state.products;
+    }
   },
   data() {
     return {
@@ -118,6 +123,27 @@ h3{
   height: 80vh;
   width: 90vw;
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+.display{
+  border: 1px solid black;
+  width: 90%;
+  height: 90%;
+}
+.add{
+  border: 1px solid black;
+  width: 90%;
+  height: 10%;
+}
+.add button{
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 @media (min-width: 300px) and (max-width: 400px) {
   .container{
