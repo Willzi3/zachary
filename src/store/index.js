@@ -102,6 +102,7 @@ export default createStore({
       fetch("https://zachary-williams.herokuapp.com/products")
         .then((response) => response.json())
         .then((json) => context.commit("setProducts", json));
+        // console.log(products)
     },
     getProduct: async (context, id) => {
       fetch("https://zachary-williams.herokuapp.com/products/" +id)
@@ -124,6 +125,7 @@ export default createStore({
     })
       .then((response) => response.json())
       .then((data) => console.log(data));
+      router.push("/", alert("Successfully added new task"))
       
 
         },

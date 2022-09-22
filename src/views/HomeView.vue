@@ -8,22 +8,21 @@
     </form>
     <div v-else>
       <div class="list">
-        <!-- <form @submit.prevent="addProduct">
-        <h3>Add Product</h3>
-            <input class="form-input" type="text" name="name" required v-model="name" placeholder="Name:"/>
-            <input class="form-input" type="text" name="descriptions" required v-model="descriptions" placeholder="Descriptions:"/>
-            <input class="form-input" type="text" name="image" required v-model="image" placeholder="Image:"/>
-            <input class="form-input" type="text" name="category" required v-model="category" placeholder="Category:"/>
-            <input class="form-input" type="text" name="created_date" required v-model="created_date" placeholder="Created Date:"/>
-            <input class="form-btn" type="submit" value="Add" />
-      </form> -->
-      <div class="display"></div>
-      <div class="add"><button>Add Project</button></div>
+      
+      <div v-if="products" class="display">
+        <Card
+   v-for="product in products" 
+   :key="product.id" 
+   :product="product"/>
+
+      </div>
+      <router-link to="/add" class="add">Add Project</router-link>
       </div>
     </div>
   </div>
 </template>
 <script>
+  import Card from "../components/Card.vue";
 export default {
   computed: {
     user() {
@@ -33,34 +32,20 @@ export default {
       return this.$store.state.products;
     }
   },
-  data() {
-    return {
-      email: "",
-      password: "",
-      name: "",
-      descriptions: "",
-      image: "",
-      category: "",
-      created_date: ""
-    };
-  },
+ 
   methods: {
     login() {
       this.$store.dispatch("login", {
         email: this.email,
         password: this.password,
       });
-    },
-    addProduct() {
-        this.$store.dispatch("addProduct", {
-        name: this.name,
-        descriptions: this.descriptions,
-        image: this.image,
-        category: this.category,
-        created_date: this.created_date
-        });
-      },
+    }
   },
+  components: { Card },
+  mounted() {
+    this.$store.dispatch("getProducts");
+    // this.$store.dispatch("getUser");
+  }
 };
 </script>
 <style scoped>
@@ -71,52 +56,6 @@ export default {
   justify-content: center;
   align-items: center;
  
-}
-form{
-  background: black;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  height: 300px;
-  gap: 20px;
-  color: white;
-}
-.form-input{
-  width: 30%;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  height: 20px;
-}
-.form-btn{
-  width: 30%;
-  border: none;
-  border-radius: 5px;
-  height: 20px;
-}
-.form-extra{
-  display: flex;
-  gap: 10px;
-}
-.form-extra p {
-  width: 170px;
-  height: 30px;
-  background: white;
-  border-radius: 5px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.form-extra a{
-  text-decoration: none;
-  color: black;
-}
-h3{
-  font-weight: bold;
-  font-size: 1.4rem;
 }
 .list{
   border: 1px solid black;
@@ -134,17 +73,18 @@ h3{
   border: 1px solid black;
   width: 98%;
   height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 .add{
   border: 1px solid black;
-  width: 90%;
-  height: 10%;
+  width: 99%;
 }
-.add button{
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+
+
 @media (min-width: 300px) and (max-width: 400px) {
   .container{
     height: 80vh;
