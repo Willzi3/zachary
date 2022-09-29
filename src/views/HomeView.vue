@@ -3,21 +3,11 @@
     <form @submit.prevent="login" v-if="!user">
       <h3>Log in:</h3>
       <input class="form-input" type="text" name="email" required v-model="email" placeholder="Email:"/>
-      <input class="form-input" type="text" name="password" required v-model="password" placeholder="Password:"/>
+      <input class="form-input" type="password" name="password" required v-model="password" placeholder="Password:"/>
       <input class="form-btn" type="submit" value="Login" />
     </form>
     <div v-else>
-      <div class="list">
-      
-      <div v-if="products" class="display">
-        <Card
-   v-for="product in products" 
-   :key="product.id" 
-   :product="product"/>
-
-      </div>
-      <router-link to="/add" class="add">Add Project</router-link>
-      </div>
+      <h1>Welcome {{user.full_name}}</h1>
     </div>
   </div>
 </template>
@@ -83,7 +73,24 @@ export default {
   border: 1px solid black;
   width: 99%;
 }
-
+form{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 250px;
+  height: 200px;
+}
+.form-input{
+width: 80%;
+height: 2rem;
+}
+.form-btn{
+width: 80%;
+height: 2rem;
+}
 
 @media (min-width: 300px) and (max-width: 400px) {
   .container{

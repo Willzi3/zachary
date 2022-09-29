@@ -1,6 +1,6 @@
 <template>
     <footer>
-      <div>Zachary Williams</div>
+      <!-- <div>Zachary Williams</div> -->
     </footer>
    
   </template>
