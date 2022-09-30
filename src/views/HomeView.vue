@@ -6,8 +6,46 @@
       <input class="form-input" type="password" name="password" required v-model="password" placeholder="Password:"/>
       <input class="form-btn" type="submit" value="Login" />
     </form>
-    <div v-else>
-      <h1>Welcome {{user.full_name}}</h1>
+    <div class="Home" v-else>
+      
+      <div class="user">
+      <router-link to="/profile">
+      <div class="user-icon"><i class="fa-solid fa-user"></i></div>
+      <div class="user_name">{{ user.full_name}}</div>
+    </router-link>
+    </div>
+     <div class="box-container">
+      <div class="box">
+      
+    </div>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Add
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-body">
+      <form @submit.prevent="addProduct">
+        <h3>Add Product</h3>
+            <input class="form-input" type="text" name="name" required v-model="name" placeholder="Name"/>
+            <input class="form-input" type="text" name="descriptions" required v-model="descriptions" placeholder="Description:"/>
+            <input class="form-input" type="text" name="image" required v-model="image"  placeholder="Image:" />
+            <input class="form-input" type="text" name="category" required v-model="category" placeholder="Category"/>
+            <input class="form-input" type="date" name="created_date" required v-model="created_date" placeholder="Created Date:"/>
+            <input class="form-btn" type="submit" value="Add" />
+      </form>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+     </div>
+   </div>
+ </div>
+</div>
+     </div>
     </div>
   </div>
 </template>
@@ -18,10 +56,20 @@ export default {
     user() {
       return this.$store.state.user;
     },
-    products() {
-      return this.$store.state.products;
+    product() {
+      return this.$store.state.product;
     }
   },
+  data() {
+      return {
+        name: "",
+        descriptions: "",
+        image: "",
+        category: "",
+        created_date: "",
+
+      };
+    },
  
   methods: {
     login() {
@@ -39,9 +87,31 @@ export default {
 };
 </script>
 <style scoped>
+  a{
+    border: 1px solid black;
+    display: flex;
+    gap: 5px;
+  }
+  .btn{
+    width: 200px;
+  }
+   .box{
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        border-radius: 5px;
+        
+    }
+    .box-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      gap: 10px;
+    }
 .container{
   height: 100vh;
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,8 +150,9 @@ form{
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding: 10px;
   width: 250px;
-  height: 200px;
+  height: 350px;
 }
 .form-input{
 width: 80%;
@@ -91,43 +162,50 @@ height: 2rem;
 width: 80%;
 height: 2rem;
 }
+.Home{
+  border: 1px solid black;
+  height: 100vh;
+  width: 100vw;
+}
+.user{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.user-icon{
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 50px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.user_name{
+  border: 1px solid black;
+  width: 130px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user_name:hover{
+  background: black;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: 150px;
+  transition: 1s ease-in-out linear;
+}
+.modal-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-@media (min-width: 300px) and (max-width: 400px) {
-  .container{
-    height: 80vh;
-  }
-  .form-input{
-    width: 170px;
-    height: 30px;
-  }
-  .form-btn{
-    width: 170px;
-     height: 30px;
-  }
-  .form-extra{
-    display: flex;
-    flex-direction: column;
-  }
-  form{
-    width: 400px;
-  }
-  h3{
-    display: none;
-  }
-}
-@media (min-width: 200px) and (max-width: 300px) {
-  .form-input{
-    width: 140px;
-  }
-  .form-btn{
-    width: 140px;
-  }
-  .form-extra{
-    display: flex;
-    flex-direction: column;
-  }
-  form{
-    width: 350px;
-  }
-}
+
 </style>
