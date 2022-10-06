@@ -77,8 +77,18 @@ export default {
         email: this.email,
         password: this.password,
       });
-    }
-  },
+    },
+       addProduct() {
+        this.$store.dispatch("addProduct", {
+        name: this.name,
+        descriptions: this.descriptions,
+        image: this.image,
+        category: this.category,
+        created_date: this.created_date,
+  
+        });
+      },
+    },
   components: { Card },
   mounted() {
     this.$store.dispatch("getProducts");
