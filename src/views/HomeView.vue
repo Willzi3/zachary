@@ -8,12 +8,12 @@
     </form>
     <div class="Home" v-else>
       
-      <div class="user">
+      <!-- <div class="user">
       <router-link to="/profile">
       <div class="user-icon"><i class="fa-solid fa-user"></i></div>
       <div class="user_name">{{ user.full_name}}</div>
     </router-link>
-    </div>
+    </div> -->
      <div class="box-container">
       <div class="box">
       
@@ -29,7 +29,6 @@
    <div class="modal-content">
      <div class="modal-body">
       <form @submit.prevent="addProduct">
-        <h3>Add Product</h3>
             <input class="form-input" type="text" name="name" required v-model="name" placeholder="Name"/>
             <input class="form-input" type="text" name="descriptions" required v-model="descriptions" placeholder="Description:"/>
             <input class="form-input" type="text" name="image" required v-model="image"  placeholder="Image:" />
@@ -46,20 +45,16 @@
  </div>
 </div>
      </div>
+     <hr/>
+     <div v-if="products" class="output">
+      <img class="img" :src="products.image" />
+     </div>
     </div>
   </div>
 </template>
 <script>
   import Card from "../components/Card.vue";
 export default {
-  computed: {
-    user() {
-      return this.$store.state.user;
-    },
-    product() {
-      return this.$store.state.product;
-    }
-  },
   data() {
       return {
         name: "",
@@ -70,7 +65,17 @@ export default {
 
       };
     },
- 
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+    product() {
+      return this.$store.state.product;
+    },
+    products() {
+      return this.$store.state.products;
+    }
+  },
   methods: {
     login() {
       this.$store.dispatch("login", {
@@ -90,10 +95,7 @@ export default {
       },
     },
   components: { Card },
-  mounted() {
-    this.$store.dispatch("getProducts");
-    // this.$store.dispatch("getUser");
-  }
+ 
 };
 </script>
 <style scoped>
@@ -101,6 +103,7 @@ export default {
     border: 1px solid black;
     display: flex;
     gap: 5px;
+    text-decoration: none;
   }
   .btn{
     width: 200px;
@@ -115,7 +118,7 @@ export default {
     .box-container{
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: left;
       align-items: center;
       padding: 10px;
       gap: 10px;
@@ -176,6 +179,16 @@ height: 2rem;
   border: 1px solid black;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+img{
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
 }
 .user{
   display: flex;
@@ -206,9 +219,6 @@ height: 2rem;
   background: black;
   color: white;
   cursor: pointer;
-  font-weight: bold;
-  width: 150px;
-  transition: 1s ease-in-out linear;
 }
 .modal-body{
   display: flex;
@@ -216,6 +226,12 @@ height: 2rem;
   justify-content: center;
   align-items: center;
 }
-
+.output{
+  border: 1px solid black;
+  width: 90%;
+  height: 400px;
+  margin-bottom: 60px;
+  
+}
 
 </style>

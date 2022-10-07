@@ -1,7 +1,7 @@
 <template>
     <!-- <router-link class="product_box" :to="{ name: 'ProductDetails', params: { id: product.product_id } }"> -->
       <div class="card">
-        <p class="product_title">{{ product.name }}</p>
+        <p class="product_title">{{ product.image }}</p>
         <!-- <p class="product_title">R{{ product.price }}.00</p> -->
       </div>
     <!-- </router-link> -->
