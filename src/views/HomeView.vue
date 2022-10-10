@@ -1,55 +1,11 @@
 <template>
   <div class="container">
-    <form @submit.prevent="login" v-if="!user">
+    <form @submit.prevent="login">
       <h3>Log in:</h3>
       <input class="form-input" type="text" name="email" required v-model="email" placeholder="Email:"/>
       <input class="form-input" type="password" name="password" required v-model="password" placeholder="Password:"/>
       <input class="form-btn" type="submit" value="Login" />
     </form>
-    <div class="Home" v-else>
-      
-      <!-- <div class="user">
-      <router-link to="/profile">
-      <div class="user-icon"><i class="fa-solid fa-user"></i></div>
-      <div class="user_name">{{ user.full_name}}</div>
-    </router-link>
-    </div> -->
-     <div class="box-container">
-      <div class="box">
-      
-    </div>
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
- Add
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
- <div class="modal-dialog">
-   <div class="modal-content">
-     <div class="modal-body">
-      <form @submit.prevent="addProduct">
-            <input class="form-input" type="text" name="name" required v-model="name" placeholder="Name"/>
-            <input class="form-input" type="text" name="descriptions" required v-model="descriptions" placeholder="Description:"/>
-            <input class="form-input" type="text" name="image" required v-model="image"  placeholder="Image:" />
-            <input class="form-input" type="text" name="category" required v-model="category" placeholder="Category"/>
-            <input class="form-input" type="date" name="created_date" required v-model="created_date" placeholder="Created Date:"/>
-            <input class="form-btn" type="submit" value="Add" />
-      </form>
-     </div>
-     <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-       
-     </div>
-   </div>
- </div>
-</div>
-     </div>
-     <hr/>
-     <div v-if="products" class="output">
-      <img class="img" :src="products.image" />
-     </div>
-    </div>
   </div>
 </template>
 <script>
@@ -179,10 +135,10 @@ height: 2rem;
   border: 1px solid black;
   height: 100vh;
   width: 100vw;
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
   
 }
 img{

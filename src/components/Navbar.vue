@@ -7,8 +7,16 @@
         <span></span>
         <span></span>
         <ul id="menu" v-if="user">
-         <h1 @click="logout">Logout</h1>
+         <!-- <h1 @click="logout">Logout</h1> -->
+         <div class="link"><a href="#" class="active">Profile</a></div>
+         <div class="link"></div>
+         <div class="link"></div>
         </ul>
+        <div class="social-icons">
+                <div class="icon"><i class="fa-brands fa-github"></i></div>
+                <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
+                <div class="icon"><i class="fa-brands fa-codepen"></i></div>
+        </div>
       </div>
     </nav>
     </div>
@@ -47,7 +55,7 @@
     margin-top: 20%;
   }
   #menuToggle {
-    color: white;
+    color: black;
     display: block;
     position: fixed;
     top: 50px;
@@ -75,6 +83,8 @@
   #menuToggle input {
     display: block;
     width: 40px;
+    margin-left: -15px;
+    margin-top: -17px;
     height: 32px;
     position: absolute;
     top: -7px;
@@ -83,6 +93,7 @@
     opacity: 0; /* hide this */
     z-index: 2; /* and place it over the hamburger */
     -webkit-touch-callout: none;
+    color: black;
   }
   /*
   * Just a quick hamburger
@@ -92,8 +103,10 @@
     width: 33px;
     height: 4px;
     margin-bottom: 5px;
+    margin-left: -15px;
+    margin-top: -17px;
     position: relative;
-    background: grey;
+    background: lightslategray;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 4px 0px;
@@ -136,10 +149,9 @@
     position: absolute;
     width: 380px;
     height: 120vh;
-    margin: -100px 0 0 -50px;
+    margin: -80px 0 0 -95px;
     padding: 50px;
     padding-top: 125px;
-    background: black;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     /* to stop flickering of text in safari */
@@ -155,4 +167,51 @@
     transform: none;
   }
   /* End of Navbar */
+  .link{
+    background: lightslategray;
+    color: white;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+   
+  }
+  a{
+    font-size: 2rem;
+    display: none;
+    color: white;
+    text-decoration: none;
+  }
+  a:active{
+    background: blue;
+  }
+  
+  .link:hover{
+    border-radius: 20%;
+    width: 200px;
+    transition: all 1s ease-in-out;
+    z-index: 150;
+  }
+  .social-icons {
+    position: fixed;
+    z-index: 20;
+    left: 1%;
+    bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 5px;
+    border: 3px solid white;
+    border-radius: 20px;
+    background-color: lightslategray;
+}
+i{
+  color: white;
+  font-size: 2rem;
+}
   </style>
