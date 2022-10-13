@@ -6,40 +6,57 @@
         <span></span>
         <span></span>
         <span></span>
-        <ul id="menu" v-if="user">
+        <ul id="menu">
          <!-- <h1 @click="logout">Logout</h1> -->
          <div class="link"><a href="#" class="active">Profile</a></div>
          <div class="link"></div>
          <div class="link"></div>
         </ul>
         <div class="social-icons">
-                <div class="icon"><i class="fa-brands fa-github"></i></div>
-                <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
-                <div class="icon"><i class="fa-brands fa-codepen"></i></div>
+                <div class="pro" v-if="!user">
+
+                </div>
+                <div class="pron" v-else><div class="icon"><i class="fa-solid fa-shop"></i></div>
+                <div class="icon">
+                  <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="icon" @click="logout()">
+                  <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+                </div></div>
         </div>
       </div>
     </nav>
     </div>
     <router-view/>
   </template>
-  <script>
-    export default {
-      computed: {
-        user() {
-          return this.$store.state.user
-        }
-      },
-      methods: {
-        logout() {
-      console.log("object");
-      this.$store.state.user = null;
-      this.$store.state.cart = null;
-      localStorage.removeItem("users");
-      this.$router.push("/");
-    },
-      }
-    }
-  </script>
+ <script>
+ export default {
+     computed: {
+     user() {
+       return this.$store.state.user
+     },
+     users() {
+       return this.$store.state.users
+     },
+   },
+   mounted() {
+     // this.$store.dispatch("getUser");
+   },
+   methods: {
+     logout() {
+       console.log("object");
+       this.$store.state.user = null;
+       this.$store.state.cart = null;
+       localStorage.removeItem("users");
+       this.$router.push("/");
+     },
+     deleteuser(id) {
+       return this.$store.dispatch("Deleteuser", id);
+     },
+   }
+ }
+ </script>
+ 
   <style>
   /* Navbar */
   .nav {
@@ -106,7 +123,7 @@
     margin-left: -15px;
     margin-top: -17px;
     position: relative;
-    background: lightslategray;
+    background: black;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 4px 0px;
@@ -126,7 +143,7 @@
   #menuToggle input:checked ~ span {
     opacity: 1;
     transform: rotate(45deg) translate(-2px, -1px);
-    background: white;
+    background: black;
   }
   /*
   * But let's hide the middle one.
@@ -168,8 +185,7 @@
   }
   /* End of Navbar */
   .link{
-    background: lightslategray;
-    color: white;
+    border: 1px solid black;
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -177,24 +193,24 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    margin-left: 1rem;
    
   }
+  
   a{
     font-size: 2rem;
     display: none;
     color: white;
     text-decoration: none;
   }
-  a:active{
-    background: blue;
-  }
-  
-  .link:hover{
+
+ 
+  /* .link:hover {
     border-radius: 20%;
     width: 200px;
     transition: all 1s ease-in-out;
     z-index: 150;
-  }
+  } */
   .social-icons {
     position: fixed;
     z-index: 20;
@@ -206,12 +222,13 @@
     align-items: center;
     gap: 20px;
     padding: 5px;
-    border: 3px solid white;
-    border-radius: 20px;
-    background-color: lightslategray;
+    border-radius: 10px;
+   
 }
-i{
-  color: white;
-  font-size: 2rem;
+.icon i{
+  font-size: 3rem;
+}
+.pron .icon{
+margin-bottom: 20px;
 }
   </style>

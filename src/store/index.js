@@ -62,7 +62,7 @@ export default createStore({
         }).then((res) => res.json()).then((data) => {
           console.log(data.user);
           context.commit('setUser', data.user)
-          router.push("/profile", alert("Successfully Logged In:"))
+          router.push("/profile")
         })
       } 
       else {

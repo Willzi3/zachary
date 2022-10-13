@@ -1,9 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Landing from '../views/Landing.vue'
 import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
     path: '/',
+    name: 'landing',
+    component: () => import('../views/Landing.vue')
+  },
+  {
+    path: '/home',
     name: 'home',
     component: HomeView
   },
@@ -13,9 +19,19 @@ const routes = [
     component: () => import('../views/AboutView.vue')
   },
   {
-    path: '/register',
-    name: 'Register',
-    component: () => import('../views/Register.vue')
+    path: '/purchase',
+    name: 'Buy',
+    component: () => import('../views/Buy.vue')
+  },
+  {
+    path: '/sell',
+    name: 'Sell',
+    component: () => import('../views/Sell.vue')
+  },
+  {
+    path: '/rent',
+    name: 'Rent',
+    component: () => import('../views/Rent.vue')
   },
   {
     path: '/profile',
