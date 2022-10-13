@@ -1,12 +1,30 @@
 <template>
-  <h1>Profile</h1>
+  
 </template>
 
 <script>
-export default {
-
-}
-</script>
+  export default {
+    computed: {
+      user() {
+        return this.$store.state.user;
+      },
+    },
+    data() {
+      return {
+        email: "",
+        password: "",
+      };
+    },
+    methods: {
+      login() {
+        this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password,
+        });
+      },
+    },
+  };
+  </script>
 
 <style>
 

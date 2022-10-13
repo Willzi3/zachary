@@ -8,7 +8,7 @@
         <span></span>
         <ul id="menu">
          <!-- <h1 @click="logout">Logout</h1> -->
-         <div class="link"><a href="#" class="active">Profile</a></div>
+         <div class="link"><i class="fa-solid fa-house"></i> </div>
          <div class="link"></div>
          <div class="link"></div>
         </ul>
@@ -184,8 +184,8 @@
     transform: none;
   }
   /* End of Navbar */
-  .link{
-    border: 1px solid black;
+  .link ::before{
+   
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -196,6 +196,10 @@
     margin-left: 1rem;
    
   }
+ 
+  .link i{
+    font-size: 3rem;
+  }
   
   a{
     font-size: 2rem;
@@ -205,12 +209,12 @@
   }
 
  
-  /* .link:hover {
+  .link::after {
     border-radius: 20%;
     width: 200px;
     transition: all 1s ease-in-out;
     z-index: 150;
-  } */
+  }
   .social-icons {
     position: fixed;
     z-index: 20;

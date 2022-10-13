@@ -48,9 +48,9 @@ export default createStore({
 
       let data = await res.json()
       console.log(data)
-
+      
       if(data.token){
-        context.commit('setToken', data.token)
+      
 
         // Verify token
         // 

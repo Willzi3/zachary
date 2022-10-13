@@ -2,7 +2,7 @@
   <div class="container">
     <div class="home">
       <div class="options">
-      <router-link class="opt" to="/purchase">Buy</router-link>
+      <div class="opt"><a href="/purchase">Buy</a></div>
       <div class="opt">RENT</div>
       <div class="opt">SELL</div>
     </div>
